@@ -1,0 +1,130 @@
+body {
+    font-family: "微軟正黑體", "Microsoft JhengHei", "Segoe UI Semibold", "Segoe UI", "Lucida Grande", Verda !important;
+    font-weight: bolder;
+    box-sizing: border-box;
+}
+
+body, main::before {
+    background: url(../image/index/banner.jpg) 0 / cover fixed;
+}
+
+main {
+    background: hsla(0, 0%, 100%, .3);
+    position: relative;
+    overflow: hidden;
+    border-radius: .3em;
+    margin: 0 auto;
+    box-shadow: 0 0 0 1px hsla(0, 0%, 100%, .3) inset, 0 .5em 1em rgba(0, 0, 0, 0.6);
+    text-shadow: 0 1px 1px hsla(0, 0%, 100%, .3);
+}
+
+main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    filter: blur(10px);
+    z-index: -1;
+    margin: -10px;
+}
+
+#bannerTitle h1 {
+    font-weight: bolder !important;
+}
+
+#bannerTitle h2 {
+    font-weight: bolder !important;
+}
+
+#followingNavbar .item {
+    font-size: 1.2rem;
+    font-weight: bolder !important;
+}
+
+#navbar .item {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder !important;
+}
+
+.hidden.menu {
+    display: none;
+}
+
+.masthead.segment {
+    min-height: 700px;
+    padding: 1em 0em;
+}
+
+.masthead .logo.item img {
+    margin-right: 1em;
+}
+
+.masthead .ui.menu .ui.button {
+    margin-left: 0.5em;
+}
+
+.masthead h1.ui.header {
+    margin-top: 3em;
+    margin-bottom: 0em;
+    font-size: 4em;
+    font-weight: normal;
+}
+
+.masthead h2 {
+    font-size: 1.7em;
+    font-weight: normal;
+}
+
+.secondary.toc.menu .toc.item {
+    display: none;
+}
+
+.ui.vertical.stripe {
+    padding: 8em 0em;
+}
+
+.ui.vertical.stripe h3 {
+    font-size: 2em;
+}
+
+.ui.vertical.stripe .button+h3, .ui.vertical.stripe p+h3 {
+    margin-top: 3em;
+}
+
+.ui.vertical.stripe .floated.image {
+    clear: both;
+}
+
+.ui.vertical.stripe p {
+    font-size: 1.33em;
+}
+
+.ui.vertical.stripe .horizontal.divider {
+    margin: 3em 0em;
+}
+
+@media only screen and (max-width: 700px) {
+    .ui.fixed.menu {
+        display: none !important;
+    }
+    .secondary.toc.menu .item, .secondary.toc.menu .menu {
+        display: none;
+    }
+    .secondary.toc.menu .toc.item {
+        display: block;
+    }
+    .masthead.segment {
+        min-height: 350px;
+    }
+    .masthead h1.ui.header {
+        font-size: 2em;
+        margin-top: 1.5em;
+    }
+    .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+    }
+}

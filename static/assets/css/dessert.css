@@ -1,0 +1,7 @@
+#desserts {
+    margin: 0 auto;
+}
+
+#desserts .ui.item {
+    margin-bottom: 5rem;
+}

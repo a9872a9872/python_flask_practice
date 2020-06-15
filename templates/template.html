@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>台中美食</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fadeIn.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/footer.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/fadeIn.js') }}"></script>
+</head>
+
+<body class="pushable">
+
+<!-- Page Contents -->
+<div class="pusher">
+
+    <main id="banner" class="ui vertical masthead center aligned segment">
+
+        <!-- header -->
+        <header>
+            <!-- Following Menu -->
+            <div class="ui large top fixed hidden menu">
+                <div id="followingNavbar" class="ui container">
+                    <a class="item" href="./">
+                        <img class="ui mini fluid image" src="static/assets/image/Logo.jpg" alt="">
+                    </a>
+                    <a class="item" href="./">Home</a>
+                    <a class="item" href="./food">主食</a>
+                    <a class="item" href="./dessert">甜點</a>
+                    <a class="item" href="./drinks">飲料</a>
+                    {% if session['logged_in'] == true %}
+                        <a class="item" href="/logout">登出</a>
+                    {% else %}
+                        <a class="item login-item" href="#">登入</a>
+                        <a class="item register-item" href="#">註冊</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <div class="ui vertical sidebar menu left">
+                <a class="item" href="./">
+                    <img class="ui mini fluid image" src="static/assets/image/Logo.jpg" alt="">
+                </a>
+                <a class="item" href="./">Home</a>
+                <a class="item" href="./food">主食</a>
+                <a class="item" href="./dessert">甜點</a>
+                <a class="item" href="./drinks">飲料</a>
+                {% if session['logged_in'] == true %}
+                    <a class="item" href="/logout">登出</a>
+                {% else %}
+                    <a class="item login-item" href="#">登入</a>
+                    <a class="item register-item" href="#">註冊</a>
+                {% endif %}
+            </div>
+
+            <!-- main menu -->
+            <div id="navbar" class="ui container">
+                <div class="ui large secondary menu toc">
+                    <a class="toc item">
+                        <i class="sidebar icon"></i>
+                    </a>
+                    <a class="item" href="./">
+                        <img class="ui mini fluid image" src="static/assets/image/Logo.jpg" alt="">
+                    </a>
+                    <a class="item" href="./">Home</a>
+                    <a class="item" href="./food">主食</a>
+                    <a class="item" href="./dessert">甜點</a>
+                    <a class="item" href="./drinks">飲料</a>
+                    {% if session['logged_in'] == true %}
+                        <a class="item" href="/logout">登出</a>
+                    {% else %}
+                        <a class="item login-item" href="#">登入</a>
+                        <a class="item register-item" href="#">註冊</a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+        <!-- header end -->
+
+        <div id="bannerTitle" class="ui text container">
+            <div>
+                <h1 class="ui inverted header">
+                    {{ introduction }}
+                </h1>
+                <h2>1082動態網頁設計</h2>
+            </div>
+        </div>
+    </main>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- footer -->
+    <div id="footer" class="ui inverted vertical footer segment mainColorBg">
+        <div class="ui center align container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+                <div class="ui center aligned eight wide column">
+                    <img id="footerLogo" class="ui fluid image" src="static/assets/image/Logo.jpg" alt="logo">
+                </div>
+                <div class="ui middle aligned eight wide column">
+                    <h4 class="ui left aligned inverted header">台中美食介紹</h4>
+                    <h4 class="ui left aligned inverted header">Taichung Food Introduction</h4>
+                    <h5 class="ui left aligned inverted header">
+                        Copyright © 台中美食介紹
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% if session['logged_in'] != true %}
+    # login modal
+    <div class="ui tiny modal login-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            登入
+        </div>
+        <div class="image content">
+            <form class="ui form">
+                <div class="field">
+                    <label>信箱</label>
+                    <input class="login-email" type="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <label>密碼</label>
+                    <input class="login-password" type="password" placeholder="Password">
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui button deny red">取消</div>
+            <div class="ui button green" id="login">登入</div>
+        </div>
+    </div>
+
+    # register modal
+    <div class="ui tiny modal register-modal">
+        <i class="close icon"></i>
+        <div class="header">
+            註冊
+        </div>
+        <div class="image content">
+            <form class="ui form">
+                <div class="field">
+                    <label>姓名</label>
+                    <input class="register-name" type="text" placeholder="Name">
+                </div>
+                <div class="field">
+                    <label>信箱</label>
+                    <input class="register-email" type="email" placeholder="Email">
+                </div>
+                <div class="field">
+                    <label>密碼</label>
+                    <input class="register-password" type="password" placeholder="Password">
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui button deny red">取消</div>
+            <div class="ui button green" id="register">註冊</div>
+        </div>
+    </div>
+{% endif %}
+
+</body>
+
+</html>

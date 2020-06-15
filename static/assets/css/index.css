@@ -1,0 +1,12 @@
+#aboutTitle {
+    margin: 0 auto;
+}
+
+#aboutTitle h1.ui.header {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+#about {
+    white-space: nowrap;
+}

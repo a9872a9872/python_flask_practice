@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>台中美食</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/index.css') }}">
+</head>
+
+<body class="pushable">
+{% extends "template.html" %}
+{% block content %}
+    <!-- Page Contents -->
+    <div class="pusher">
+
+    <!-- about us -->
+    <div class="ui vertical stripe segment">
+        <div class="ui middle aligned stackable grid container">
+
+            <div id="aboutTitle" class="ui middle aligned cneter aligned grid">
+                <h1 class="ui teal image header">
+                    <i class="left id card icon"></i>
+                    <div class="content">成員介紹</div>
+                </h1>
+            </div>
+
+            <!-- e7 -->
+            <div class="row hideme">
+                <div class="six wide left floated column">
+                    <img src="static/assets/image/personalImg/e7.JPG" class="ui large bordered rounded image">
+                </div>
+                <div class="eight wide column">
+                    <div id="about" class="ui piled segment">
+                        <h1 class="ui header">蔡易錡</h1>
+                        <div class="ui horizontal segments">
+                            <div class="ui segment">
+                                <p>資工三B</p>
+                            </div>
+                            <div class="ui segment">
+                                <p>410615877</p>
+                            </div>
+                            <div class="ui segment">
+                                <p>前端設計</p>
+                            </div>
+                        </div>
+                        <p>資工系宅宅</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lin -->
+            <div class="row hideme">
+                <div class="six wide left floated column">
+                    <img src="static/assets/image/personalImg/lin.jpg" class="ui large bordered rounded image">
+                </div>
+                <div class="eight wide column">
+                    <div id="about" class="ui piled segment">
+                        <h1 class="ui header">林家民</h1>
+                        <div class="ui horizontal segments">
+                            <div class="ui segment">
+                                <p>資工三B</p>
+                            </div>
+                            <div class="ui segment">
+                                <p>410616255</p>
+                            </div>
+                            <div class="ui segment">
+                                <p>資料收集</p>
+                            </div>
+                        </div>
+                        <p>資工系邊</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Qi -->
+            <div class="row hideme">
+                <div class="six wide left floated column">
+                    <img src="static/assets/image/personalImg/qi.jpg" class="ui large bordered rounded image">
+                </div>
+                <div class="eight wide column">
+                    <div id="about" class="ui piled segment">
+                        <h1 class="ui header">莊英祺</h1>
+                        <div class="ui horizontal segments">
+                            <div class="ui segment">
+                                <p>資工三B</p>
+                            </div>
+                            <div class="ui segment">
+                                <p>410615738</p>
+                            </div>
+                            <div class="ui segment">
+                                <p>後端撰寫</p>
+                            </div>
+                        </div>
+                        <p>資工系街舞小王子</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+</div>
+
+</body>
+
+</html>

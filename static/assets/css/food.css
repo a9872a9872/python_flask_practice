@@ -1,0 +1,7 @@
+#foods{
+    margin: 0 auto;
+}
+
+#foods .ui.item{
+    margin-bottom: 5rem;
+}
