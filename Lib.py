@@ -7,7 +7,7 @@ def doHash(data):
     return m.hexdigest()
 
 def seed(Member, Post):
-    testData = Member(name='Kerami', email='user@gmail.com', password=doHash('user'))
+    testData = Member(name='admin', email='admin@gmail.com', password=doHash('admin'))
     testData.save()
 
     testData2 = Member(name='test', email='test@gmail.com', password=doHash('test'))
