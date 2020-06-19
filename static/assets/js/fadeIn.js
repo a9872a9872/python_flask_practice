@@ -29,6 +29,10 @@ $(document).ready(function () {
         $('.register-modal').modal('show');
     })
 
+    $('.add-item').click(function() {
+        $('.add-modal').modal('show');
+    })
+
     $('#login').click(function() {
         var email = $('.login-email').val();
         var password = $('.login-password').val();
@@ -43,6 +47,7 @@ $(document).ready(function () {
             },
             success: function(data) {
                 if (data['success'] == 0) {
+                    alert(data['message']);
                     location.reload();
                 } else {
                     alert(data['message']);
@@ -67,6 +72,46 @@ $(document).ready(function () {
             },
             success: function(data) {
                 if (data['success'] == 0) {
+                    alert(data['message']);
+                    location.reload();
+                } else {
+                    alert(data['message']);
+                }
+            }
+        })
+    })
+
+    $('#add-restaurant').click(function() {
+        var type = $('.add-type').val();
+        var name = $('.add-name').val();
+        var address = $('.add-address').val();
+        var time = $('.add-time').val();
+        var phone = $('.add-phone').val();
+        var image = $('.add-image').val();
+        var website = $('.add-website').val();
+
+        console.log(type)
+        console.log(name)
+        console.log(time)
+        console.log(phone)
+        console.log(image)
+        console.log(website)
+        $.ajax({
+            url: './add',
+            method: 'POST',
+            dataType: 'JSON',
+            data: {
+                'type': type,
+                'name': name,
+                'address': address,
+                'time': time,
+                'phone': phone,
+                'image': image,
+                'website': website,
+            },
+            success: function(data) {
+                if (data['success'] == 0) {
+                    alert(data['message']);
                     location.reload();
                 } else {
                     alert(data['message']);

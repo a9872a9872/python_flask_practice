@@ -14,7 +14,6 @@ app = Flask(__name__)
 # sqlite
 db = SqliteDatabase('tcf.db')
 
-
 # mysql
 # db = MySQLDatabase(
 #     host='localhost',
@@ -51,6 +50,7 @@ def login():
     email = request.form['email']
     password = doHash(request.form['password'])
     user = Member.select().where(Member.email == email, Member.password == password).limit(1)
+    data = {}
     if user.exists():
         session['logged_in'] = True
         session['name'] = user[0].name
@@ -59,13 +59,12 @@ def login():
             'success': 0,
             'message': '登入成功'
         }
-        return json.dumps(data)
     else:
         data = {
             'success': -1,
             'message': '帳號或密碼錯誤'
         }
-        return json.dumps(data)
+    return json.dumps(data)
 
 
 @app.route('/logout')
@@ -73,25 +72,23 @@ def logout():
     session.clear()
     return redirect(url_for('index'))
 
-
 @app.route('/register', methods=['POST'])
 def register():
     name = request.form['name']
     email = request.form['email']
     password = request.form['password']
     user = Member.select().where(Member.email == email)
+    data = {}
     if not name or not email or not password:
         data = {
             'success': -1,
             'message': '請填寫完整'
         }
-        return json.dumps(data)
     elif user.exists():
         data = {
             'success': -1,
             'message': '信箱已有人使用'
         }
-        return json.dumps(data)
     else:
         user = Member(name=name, email=email, password=doHash(password))
         user.save()
@@ -99,13 +96,43 @@ def register():
             'success': 0,
             'message': '註冊成功'
         }
-        return json.dumps(data)
+    return json.dumps(data)
 
+@app.route('/add', methods=['POST'])
+def add():
+    type = request.form['type']
+    name = request.form['name']
+    address = request.form['address']
+    time = request.form['time']
+    phone = request.form['phone']
+    image = request.form['image']
+    website = request.form['website']
+
+    if not name or not address or not time or not phone or not image or not website:
+        data = {
+            'success': -1,
+            'message': '未填寫完整'
+        }
+    else:
+        post = Post(
+            name=name,
+            address=address,
+            time=time,
+            phone_number=phone,
+            website=website,
+            image=image,
+            type=type,
+        )
+        post.save()
+        data = {
+            'success': 0,
+            'message': '新增成功'
+        }
+    return json.dumps(data)
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
 
 class Member(Model):
     name = CharField()
@@ -114,7 +141,6 @@ class Member(Model):
 
     class Meta:
         database = db
-
 
 class Post(Model):
     name = CharField()
@@ -127,7 +153,6 @@ class Post(Model):
 
     class Meta:
         database = db
-
 
 db.connect()
 
